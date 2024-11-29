@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привітання</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label for="firstName">Введіть ім'я та прізвище</label>
+            <div class="inline-inputs">
+                <input type="text" id="firstName" placeholder="Ім'я" oninput="checkInputs()">
+                <input type="text" id="lastName" placeholder="Прізвище" oninput="checkInputs()">
+            </div>
+        </div>
+        <button onclick="sayHello()">Привіт</button>
+        <div class="greeting" id="greetingText"></div>
+        <div class="form-group">
+            <label for="number">Введіть суму, яку хочете подвоїти</label>
+            <input type="text" id="number" placeholder="0" oninput="validateNumber()">
+        </div>
+        <button id="magicButton" onclick="doubleNumber()" disabled>Магія</button>
+        <div class="result" id="result">Результат:
+            
+        </div>
+        <div id="resultImage" style="display: none;">
+            <img id="greeting-image" src="ArticleImage_25484.jpg" alt="Привітання" width="200px ">  
+        </div>
+    </div>
+
+        
+        
+
+    <script>
+         function checkInputs() {
+            // Отримати значення імені та прізвища
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const magicButton = document.getElementById('magicButton');
+
+            // Якщо і ім'я, і прізвище заповнені, активувати кнопку "Магія"
+            if (firstName && lastName) {
+                magicButton.disabled = false;
+            } else {
+                magicButton.disabled = true;
+            }
+        }
+
+        function validateNumber() {
+            const numberInput = document.getElementById('number');
+            const value = numberInput.value.trim();
+            const magicButton = document.getElementById('magicButton');
+
+            // Перевірити, чи введено правильне число
+            if (value === '' || isNaN(value)) {
+                numberInput.style.borderColor = 'red'; // Підсвічувати червоним
+                document.getElementById('result').textContent = 'Результат: Введіть правильне число!';
+            } else {
+                numberInput.style.borderColor = ''; // Зняти підсвітку
+                document.getElementById('result').textContent = 'Результат:';
+            }
+        }
+
+        function sayHello() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const greetingText = document.getElementById('greetingText');
+
+            // Якщо поля заповнені, відображати привітання
+            if (firstName && lastName) {
+                greetingText.textContent = `Привіт, ${firstName} ${lastName}!`;
+            } else {
+                greetingText.textContent = 'Будь ласка, введіть ім\'я та прізвище!';
+            }
+        }
+
+        function doubleNumber() {
+            const numberInput = document.getElementById('number').value.trim();
+            const resultElement = document.getElementById('result');
+            const resultImage = document.getElementById('resultImage');
+
+            // Якщо число введене некоректно, вивести повідомлення
+            if (isNaN(numberInput) || numberInput === '') {
+                resultElement.textContent = 'Результат: Введіть правильне число!';
+                resultImage.style.display = 'none'; // Ховати картинку
+                return;
+            }
+
+            // Обчислити подвоєне значення
+            const number = parseFloat(numberInput);
+            const result = number * 2;
+            resultElement.textContent = `Результат: ${result}`;
+            resultImage.style.display = 'block'; // Показати картинку
+        }
+    </script>
+</body>
+</html>
