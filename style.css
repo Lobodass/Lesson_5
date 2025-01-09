@@ -1,50 +1,96 @@
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-}
-.container {
-    width: 300px;
-    margin: auto;
-    padding-top: 30px;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f5f7fa, #87ceeb);
+    color: #413c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
 }
+
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
 .inline-inputs {
     display: flex;
-    gap: 10px; /* Відстань між полями */
+    gap: 10px;
 }
-.inline-inputs input[type="text"] {
-    width: 50%; /* Розділити ширину між полями */
+
+input[type="text"] {
+    width: calc(50% - 5px);
     padding: 8px;
-    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
-input[type="number"], input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+
 button {
-    padding: 10px 20px;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 button:disabled {
-    background-color: #ccc;
+    background-color: #cccccc;
     cursor: not-allowed;
 }
-.result {
-    font-weight: bold;
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
 }
-.greeting {
+
+
+.greeting, .result {
+    margin-top: 15px;
     font-size: 18px;
-    color: #2a7a2a;
     font-weight: bold;
 }
-.greeting-image{
-    width: 50px;
-    
+
+#greetingText {
+    color: #006400;
+}
+
+.result {
+    color: #8b0000;
+}
+
+
+#resultImage {
+    margin-top: 20px;
+}
+
+#resultImage img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
