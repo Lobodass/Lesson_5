@@ -78,24 +78,34 @@
             }
         }
 
-        function doubleNumber() {
-            const numberInput = document.getElementById('number').value.trim();
-            const resultElement = document.getElementById('result');
-            const resultImage = document.getElementById('resultImage');
 
-            // Якщо число введене некоректно, вивести повідомлення
-            if (isNaN(numberInput) || numberInput === '') {
-                resultElement.textContent = 'Результат: Введіть правильне число!';
-                resultImage.style.display = 'none'; // Ховати картинку
-                return;
-            }
+function doubleNumber() {
+    const numberInput = document.getElementById('number').value.trim();
+    const resultElement = document.getElementById('result');
+    const resultImage = document.getElementById('resultImage');
 
-            // Обчислити подвоєне значення
-            const number = parseFloat(numberInput);
-            const result = number * 2;
-            resultElement.textContent = `Результат: ${result}`;
-            resultImage.style.display = 'block'; // Показати картинку
-        }
+    // Якщо значення не є числом або порожнє
+    if (isNaN(numberInput) || numberInput === '') {
+        resultElement.textContent = 'Результат: Введіть числове значення!';
+        resultImage.style.display = 'none'; // Ховати картинку
+        return;
+    }
+
+    // Перетворення введення у число
+    const number = parseFloat(numberInput);
+
+    // Якщо число менше або дорівнює нулю
+    if (number <= 0) {
+        resultElement.textContent = 'Результат: Не можна подвоїти число, яке менше або дорівнює нулю!';
+        resultImage.style.display = 'none'; // Ховати картинку
+        return;
+    }
+
+    // Обчислити подвоєне значення
+    const result = number * 2;
+    resultElement.textContent = `Результат: ${result}`;
+    resultImage.style.display = 'block'; // Показати картинку
+}
     </script>
 </body>
 </html>
