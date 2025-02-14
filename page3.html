@@ -1,13 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-    <title>Привітання</title>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор трикутника</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 80px;
+            text-align: center;
+            border: 2px solid #4facfe;
+            border-radius: 5px;
+        }
+        button {
+            background: #4facfe;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #00c3ff;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>Калькулятор трикутника</h2>
+        <label>Катет A:</label>
+        <input type="number" id="katetA" placeholder="Введіть A">
+        <label>Катет B:</label>
+        <input type="number" id="katetB" placeholder="Введіть B">
+        <br>
+        <button onclick="calculateTriangle()">Обчислити</button>
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        function calculateTriangle() {
+            let a = parseFloat(document.getElementById("katetA").value);
+            let b = parseFloat(document.getElementById("katetB").value);
+            
+            if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+                document.getElementById("result").innerHTML = "Будь ласка, введіть коректні значення катетів.";
+                return;
+            }
+            
+            let c = Math.sqrt(a * a + b * b).toFixed(2);
+            let perimeter = (a + b + parseFloat(c)).toFixed(2);
+            let area = (0.5 * a * b).toFixed(2);
+            
+            document.getElementById("result").innerHTML = 
+                `<p>Гіпотенуза: <b>${c}</b></p>
+                 <p>Периметр: <b>${perimeter}</b></p>
+                 <p>Площа: <b>${area}</b></p>`;
+        }
+    </script>
 </body>
 </html>

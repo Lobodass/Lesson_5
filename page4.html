@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-    <title>Привітання</title>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обчислення площі круга</title>
+    <script>
+        function calculateArea() {
+            let radius = parseFloat(document.getElementById("radius").value);
+            if (isNaN(radius) || radius <= 0) {
+                document.getElementById("result").innerText = "Введіть коректний радіус";
+                return;
+            }
+            let area = Math.PI * Math.pow(radius, 2);
+            document.getElementById("result").innerText = "Площа круга: " + area.toFixed(2);
+        }
+    </script>
 </head>
 <body>
+    <h2>Калькулятор площі круга</h2>
+    <label for="radius">Введіть радіус:</label>
+    <input type="number" id="radius" step="any">
+    <button onclick="calculateArea()">Обчислити</button>
+    <p id="result"></p>
 </body>
 </html>

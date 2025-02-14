@@ -1,13 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-    <title>Привітання</title>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор квадрата</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
-<body>\
+<body>
+    <div class="container">
+        <h2>Калькулятор квадрата</h2>
+        <label for="side">Введіть сторону квадрата:</label>
+        <input type="number" id="side" step="any">
+        <button onclick="calculate()">Обчислити</button>
+        <p id="perimeter"></p>
+        <p id="area"></p>
+        <p id="diagonal"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            let side = parseFloat(document.getElementById('side').value);
+            if (isNaN(side) || side <= 0) {
+                alert('Будь ласка, введіть коректне число.');
+                return;
+            }
+            let perimeter = (4 * side).toFixed(1);
+            let area = (side * side).toFixed(1);
+            let diagonal = (Math.sqrt(2) * side).toFixed(1);
+            document.getElementById('perimeter').textContent = `Периметр: ${perimeter}`;
+            document.getElementById('area').textContent = `Площа: ${area}`;
+            document.getElementById('diagonal').textContent = `Діагональ: ${diagonal}`;
+        }
+    </script>
 </body>
 </html>
